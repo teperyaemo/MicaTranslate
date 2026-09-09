@@ -1,0 +1,263 @@
+<Window
+    x:Class="MicaTranslate.UI.AppWindows.SettingsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tacontrols="using:MicaTranslate.UI.Controls"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    xmlns:ctcontrols="using:CommunityToolkit.WinUI.Controls"
+    mc:Ignorable="d">
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+    <Grid Name="settingsGrid">
+        <Grid.Resources>
+            <Style
+                x:Key="SettingsSectionHeaderTextBlockStyle"
+                BasedOn="{StaticResource BodyStrongTextBlockStyle}"
+                TargetType="TextBlock">
+                <Style.Setters>
+                    <Setter Property="Margin" Value="1,30,0,6" />
+                </Style.Setters>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0">
+            <TitleBar
+                x:Uid="SettingsWindow_TitleBar"
+                Name="SettingsTitleBar"
+                IsBackButtonVisible="False"
+                IsTabStop="False"
+                IsPaneToggleButtonVisible="False">
+                <TitleBar.IconSource>
+                    <ImageIconSource ImageSource="/Assets/AppLogo32.ico" />
+                </TitleBar.IconSource>
+            </TitleBar>
+            <Grid HorizontalAlignment="Stretch" MaxWidth="1000" Margin="20, 0" Padding="6,0" Height="70">
+                <TextBlock 
+                    VerticalAlignment="Center" 
+                    x:Uid="SettingsWindow_PageTitle"
+                    FontSize="30" 
+                    FontWeight="SemiBold"/>
+            </Grid>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="0" Grid.RowSpan="2" Margin="0, 110, 0, 0">
+            <Grid Padding="20,0,20,16">
+                <StackPanel Spacing="6" MaxWidth="1000" HorizontalAlignment="Stretch">
+                    <!-- GENERAL SETTINGS -->
+                    <TextBlock
+                        x:Uid="SettingsWindow_MainSettingsTb"
+                        Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" 
+                        Margin="1, 0, 0, 6"/>
+                    <ctcontrols:SettingsCard
+                        x:Uid="SettingsWindow_TranslateEngineSc"
+                        HeaderIcon="{ui:FontIcon Glyph=&#xF1D4;}">
+                        <ComboBox
+                            ItemsSource="{Binding AvailableEngines}"
+                            SelectedItem="{x:Bind ViewModel.Settings.SelectedEngine, Mode=TwoWay}"/>
+                    </ctcontrols:SettingsCard>
+
+                    <ctcontrols:SettingsCard
+                        x:Uid="SettingsWindow_MainLangSc"
+                        HeaderIcon="{ui:FontIcon Glyph=&#xE80F;}">
+                        <ComboBox
+                            ItemsSource="{Binding AvailableLanguages}"
+                            SelectedItem="{x:Bind ViewModel.Settings.SourceLanguage, Mode=TwoWay}"/>
+                    </ctcontrols:SettingsCard>
+
+                    <ctcontrols:SettingsCard
+                        x:Uid="SettingsWindow_TargetLangSc"
+                        HeaderIcon="{ui:FontIcon Glyph=&#xF272;}">
+                        <ComboBox
+                            ItemsSource="{Binding AvailableLanguages}"
+                            SelectedItem="{x:Bind ViewModel.Settings.TargetLanguage, Mode=TwoWay}"/>
+                    </ctcontrols:SettingsCard>
+
+                    <ctcontrols:SettingsCard 
+                        x:Uid="SettingsWindow_AutoDetectLanguageSc"
+                        HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
+                        <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.AutoDetectLanguage, Mode=TwoWay}"/>
+                    </ctcontrols:SettingsCard>
+
+                    <ctcontrols:SettingsCard
+                        x:Uid="SettingsWindow_AppLanguageSc"
+                        HeaderIcon="{ui:FontIcon Glyph=&#xF404;}">
+                        <ComboBox
+                            ItemsSource="{Binding AvailableAppLanguages}"
+                            SelectedItem="{x:Bind ViewModel.Settings.AppLanguage, Mode=TwoWay}"/>
+                    </ctcontrols:SettingsCard>
+
+                    <!-- WINDOW SETTINGS -->
+                    <TextBlock 
+                        x:Uid="SettingsWindow_WindowSettingsTb" 
+                        Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"/>
+                    <StackPanel>
+                        <ctcontrols:SettingsCard 
+                            CornerRadius="5,5,0,0"
+                            x:Uid="SettingsWindow_DefaultWidthSc">
+                            <ctcontrols:SettingsCard.HeaderIcon>
+                                <PathIcon
+                                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                                    Data="M7.354 5.646a.5.5 0 0 1 0 .708L4.707 9h10.586l-2.647-2.646a.5.5 0 0 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 0 1-.708-.708L15.293 10H4.707l2.647 2.646a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0"/>
+                            </ctcontrols:SettingsCard.HeaderIcon>
+                            <NumberBox
+                                MinWidth="120"
+                                Value="{x:Bind ViewModel.Settings.DefaultWidth, Mode=TwoWay}"
+                                Minimum="500"
+                                Maximum="2500"
+                                SpinButtonPlacementMode="Compact"/>
+                        </ctcontrols:SettingsCard>
+
+                        <ctcontrols:SettingsCard 
+                            CornerRadius="0,0,5,5"
+                            x:Uid="SettingsWindow_DefaultHeightSc">
+                            <ctcontrols:SettingsCard.HeaderIcon>
+                                <PathIcon
+                                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                                    Data="M6.354 7.354a.5.5 0 1 1-.708-.708l3.5-3.5a.5.5 0 0 1 .708 0l3.5 3.5a.5.5 0 0 1-.708.708L10 4.707v10.586l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 0 1 .708-.708L9 15.293V4.707z"/>
+                            </ctcontrols:SettingsCard.HeaderIcon>
+                            <NumberBox
+                                MinWidth="120"
+                                Value="{x:Bind ViewModel.Settings.DefaultHeight, Mode=TwoWay}"
+                                Minimum="300"
+                                Maximum="2000"
+                                SpinButtonPlacementMode="Compact"/>
+                        </ctcontrols:SettingsCard>
+                    </StackPanel>
+
+
+                    <ctcontrols:SettingsCard 
+                        x:Uid="SettingsWindow_StartMinimizedSc"
+                        HeaderIcon="{ui:FontIcon Glyph=&#xE944;}">
+                        <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.StartMinimized, Mode=TwoWay}"/>
+                    </ctcontrols:SettingsCard>
+
+                    <ctcontrols:SettingsCard 
+                        x:Uid="SettingsWindow_AlwaysOnTopSc"
+                        HeaderIcon="{ui:FontIcon Glyph=&#xE718;}">
+                        <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.AlwaysOnTop, Mode=TwoWay}"/>
+                    </ctcontrols:SettingsCard>
+
+                    <!--<ctcontrols:SettingsCard 
+                        Header="Запоминать размер окна">
+                        <ToggleSwitch IsOn="{Binding RememberWindowSize, Mode=TwoWay}"/>
+                    </ctcontrols:SettingsCard>-->
+
+                    <ctcontrols:SettingsCard 
+                        x:Uid="SettingsWindow_CenterOnOpenSc"
+                        HeaderIcon="{ui:FontIcon Glyph=&#xE7C2;}">
+                        <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.CenterOnOpen, Mode=TwoWay}"/>
+                    </ctcontrols:SettingsCard>
+
+                    <!-- APPEARANCE SETTINGS -->
+                    <TextBlock
+                        x:Uid="SettingsWindow_AppearanceTb"
+                        Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"/>
+                    <ctcontrols:SettingsCard
+                        x:Uid="SettingsWindow_AppThemeSc"
+                        HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+                        <ComboBox
+                            ItemsSource="{Binding AvailableThemes}"
+                            SelectedItem="{x:Bind ViewModel.Settings.SelectedTheme, Mode=TwoWay}"/>
+                        
+                    </ctcontrols:SettingsCard>
+                    <ctcontrols:SettingsCard
+                        x:Uid="SettingsWindow_BackgroundEffectSc"
+                        HeaderIcon="{ui:FontIcon Glyph=&#xEF1F;}">
+                        <ComboBox
+                            ItemsSource="{Binding BackgroundEffects}"
+                            SelectedItem="{x:Bind ViewModel.Settings.SelectedBackgroundEffect, Mode=TwoWay}"/>
+
+                    </ctcontrols:SettingsCard>
+
+
+                    <!-- ADVANCED SETTINGS -->
+                    <TextBlock 
+                        x:Uid="SettingsWindow_AdvancedTb"
+                        Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"/>
+
+                    <ctcontrols:SettingsCard 
+                        x:Uid="SettingsWindow_RunAtStartupSc"
+                        HeaderIcon="{ui:FontIcon Glyph=&#xF158;}">
+                        <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.RunAtStartup, Mode=TwoWay}"/>
+                    </ctcontrols:SettingsCard>
+
+                    <ctcontrols:SettingsCard 
+                        x:Uid="SettingsWindow_KeepTextOnMinimizeSc"
+                        HeaderIcon="{ui:FontIcon Glyph=&#xF439;}">
+                        <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.KeepTextOnMinimize, Mode=TwoWay}"/>
+                    </ctcontrols:SettingsCard>
+
+                    <ctcontrols:SettingsCard 
+                        x:Uid="SettingsWindow_CopyToClipboardSc"
+                        HeaderIcon="{ui:FontIcon Glyph=&#xF413;}">
+                        <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.CopyToClipboard, Mode=TwoWay}"/>
+                    </ctcontrols:SettingsCard>
+
+                    <ctcontrols:SettingsCard 
+                        x:Uid="SettingsWindow_EnableHotkeySc"
+                        HeaderIcon="{ui:FontIcon Glyph=&#xE945;}">
+                        <ToggleSwitch IsOn="{x:Bind ViewModel.Settings.HotkeyEnabled, Mode=TwoWay}"/>
+                    </ctcontrols:SettingsCard>
+
+                    <tacontrols:HotkeyPickerControl
+                        Hotkey="{x:Bind ViewModel.Settings.Hotkey, Mode=TwoWay}"
+                        x:Uid="SettingsWindow_HotkeyPicker"
+                        HeaderIcon="{ui:FontIcon Glyph=&#xF210;}"
+                        x:Name="HotkeyControl"/>
+
+                    <!-- ABOUT-->
+                    <TextBlock 
+                        x:Uid="SettingsWindow_AboutTb"
+                        Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"/>
+
+                    <ctcontrols:SettingsExpander
+                        x:Uid="SettingsWindow_AboutExpander">
+                        <ctcontrols:SettingsExpander.HeaderIcon>
+                            <ImageIcon Source="ms-appx:///Assets/StoreLogo.scale-400.png" />
+                        </ctcontrols:SettingsExpander.HeaderIcon>
+                        <TextBlock 
+                            x:Name="VersionTextBlock"
+                            x:Uid="SettingsWindow_Version"
+                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                        <!-- Допилить чтобы версия сама тянулась -->
+
+                        <ctcontrols:SettingsExpander.Items>
+                            <ctcontrols:SettingsCard
+                                x:Uid="SettingsWindow_GithubCard"
+                                Name="GithubCard"
+                                Click="GithubCard_Click"
+                                IsClickEnabled="True">
+                                <ctcontrols:SettingsCard.HeaderIcon>
+                                    <ImageIcon Source="ms-appx:///Assets/Github-logo.png"/>
+                                </ctcontrols:SettingsCard.HeaderIcon>
+                            </ctcontrols:SettingsCard>
+                            <ctcontrols:SettingsCard
+                                x:Uid="SettingsWindow_PrivacyCard"
+                                Name="PrivacyCard"
+                                Click="PrivacyCard_Click"
+                                IsClickEnabled="True"/>
+                            <ctcontrols:SettingsCard
+                                x:Uid="SettingsWindow_ThirdPartyNoticesCard"
+                                Name="ThirdPartyNoticesCard"
+                                Click="ThirdPartyNoticesCard_Click"
+                                IsClickEnabled="True"/>
+                            <ctcontrols:SettingsCard
+                                x:Uid="SettingsWindow_LicenseCard"
+                                Name="LicenseCard"
+                                Click="LicenseCard_Click"
+                                IsClickEnabled="True"/>
+                        </ctcontrols:SettingsExpander.Items>
+                    </ctcontrols:SettingsExpander>
+
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Window>

@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "MicaTranslate (Package)": {
+      "commandName": "MsixPackage",
+      "nativeDebugging": false
+    },
+    "MicaTranslate (Unpackaged)": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ENABLE_XAML_DIAGNOSTICS_SOURCE_INFO": "1"
+      }
+    }
+  }
+}
