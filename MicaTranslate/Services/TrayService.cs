@@ -348,13 +348,7 @@ public sealed class TrayService : ITrayService
 
     private void LoadTrayIcon()
     {
-        var iconPath =
-            Path.Combine(
-                Package.Current
-                    .InstalledLocation
-                    .Path,
-                "Assets",
-                "AppLogo32.ico");
+        var iconPath = GetAssetsPath(Path.Combine("Assets", "AppLogo32.ico"));
 
         if (!File.Exists(iconPath))
         {
@@ -524,6 +518,18 @@ public sealed class TrayService : ITrayService
 
         _appWindow.Move(
             new PointInt32(x, y));
+    }
+
+    private static string GetAssetsPath(string relativePath)
+    {
+        try
+        {
+            return Path.Combine(Package.Current.InstalledLocation.Path, relativePath);
+        }
+        catch
+        {
+            return Path.Combine(AppContext.BaseDirectory, relativePath);
+        }
     }
 
     public void Dispose()

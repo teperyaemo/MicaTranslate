@@ -62,6 +62,16 @@ public partial class App : Application
     public App()
     {
         InitializeComponent();
+
+        this.UnhandledException += (s, e) =>
+        {
+            System.IO.File.WriteAllText("crash.log", e.Exception.ToString());
+            e.Handled = true; // не дать приложению упасть молча, но можно и false
+        };
+        AppDomain.CurrentDomain.UnhandledException += (s, e) =>
+        {
+            System.IO.File.WriteAllText("crash_domain.log", e.ExceptionObject?.ToString());
+        };
     }
 
     protected override async void OnLaunched(

@@ -6,8 +6,8 @@ namespace MicaTranslate.UI.Selectors;
 
 public partial class HotkeyTemplateSelector : DataTemplateSelector
 {
-    public required DataTemplate KeyTemplate { get; set; }
-    public required DataTemplate WinKeyTemplate { get; set; }
+    public DataTemplate KeyTemplate { get; set; }
+    public DataTemplate WinKeyTemplate { get; set; }
 
     protected override DataTemplate SelectTemplateCore(object item)
     {

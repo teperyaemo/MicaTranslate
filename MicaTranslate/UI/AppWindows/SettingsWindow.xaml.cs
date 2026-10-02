@@ -10,6 +10,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 using System;
 using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using Windows.ApplicationModel;
 using Windows.System;
@@ -64,10 +65,21 @@ public sealed partial class SettingsWindow : Window, IAppearanceWindow
 
     private void SetAppVersion()
     {
-        var version = Package.Current.Id.Version;
+        try
+        {
+            var version = Package.Current.Id.Version;
 
-        VersionTextBlock.Text =
-            $"{VersionTextBlock.Text} {version.Major}.{version.Minor}.{version.Build}";
+            VersionTextBlock.Text =
+                $"{VersionTextBlock.Text} {version.Major}.{version.Minor}.{version.Build}";
+        }
+        catch
+        {
+            Version version = Assembly.GetExecutingAssembly().GetName().Version ?? new Version(1, 0, 0, 0);
+
+            VersionTextBlock.Text =
+                $"{VersionTextBlock.Text} {version.Major}.{version.Minor}.{version.Build}";
+        }
+
     }
 
     private void ConfigureTitleBar()
@@ -216,28 +228,28 @@ public sealed partial class SettingsWindow : Window, IAppearanceWindow
         object sender,
         RoutedEventArgs e)
     {
-        await OpenUrlAsync("https://google.com");
+        await OpenUrlAsync("https://github.com/teperyaemo/MicaTranslate/blob/master/PRIVACY.md");
     }
 
     private async void ThirdPartyNoticesCard_Click(
         object sender,
         RoutedEventArgs e)
     {
-        await OpenUrlAsync("https://google.com");
+        await OpenUrlAsync("https://github.com/teperyaemo/MicaTranslate/blob/master/THIRD-PARTY-NOTICES.md");
     }
 
     private async void LicenseCard_Click(
         object sender,
         RoutedEventArgs e)
     {
-        await OpenUrlAsync("https://google.com");
+        await OpenUrlAsync("https://github.com/teperyaemo/MicaTranslate/blob/master/LICENSE");
     }
 
     private async void GithubCard_Click(
         object sender,
         RoutedEventArgs e)
     {
-        await OpenUrlAsync("https://google.com");
+        await OpenUrlAsync("https://github.com/teperyaemo/MicaTranslate");
     }
 
     private static async System.Threading.Tasks.Task OpenUrlAsync(

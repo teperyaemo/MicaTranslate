@@ -29,7 +29,7 @@ internal class SettingsService : ISettingsService
     {
         _startupService = startupService;
 
-        _folderPath = ApplicationData.Current.LocalFolder.Path;
+        _folderPath = GetAppDataFolder();
         _filePath = Path.Combine(_folderPath, "settings.json");
     }
 
@@ -68,5 +68,22 @@ internal class SettingsService : ISettingsService
         var json = JsonSerializer.Serialize(Settings, options);
 
         await File.WriteAllTextAsync(_filePath, json);
+    }
+
+    private static string GetAppDataFolder()
+    {
+        try
+        {
+            return ApplicationData.Current.LocalFolder.Path;
+        }
+        catch
+        {
+            string appName = "MicaTranslate";
+            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string appFolder = Path.Combine(appDataPath, appName);
+
+            Directory.CreateDirectory(appFolder);
+            return appFolder;
+        }
     }
 }

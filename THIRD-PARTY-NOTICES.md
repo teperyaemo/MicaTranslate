@@ -8,7 +8,7 @@ information. Where applicable, additional license and notice information
 is provided by the respective projects. Mica Translate is not affiliated with, endorsed
 by, or sponsored by the respective copyright holders.
 
--------------------------------------------------------------------------------
+---
 
 1. CommunityToolkit.Mvvm
    Version: 8.4.0
@@ -36,18 +36,18 @@ by, or sponsored by the respective copyright holders.
    License: MIT
 
 6. Microsoft.Windows.CsWin32
-   Version: 0.3.242
+   Version: 0.3.333
    Copyright (c) Microsoft Corporation
    License: MIT
 
-7. Microsoft.Windows.SDK.BuildTools 
-   Version: 10.0.26100.6901 
-   Copyright (c) Microsoft Corporation 
-   License: Microsoft Software License Terms 
+7. Microsoft.Windows.SDK.BuildTools
+   Version: 10.0.28000.2705
+   Copyright (c) Microsoft Corporation
+   License: Microsoft Software License Terms
    Usage: Build-time dependency; not distributed as part of Mica Translate
 
 8. Microsoft.WindowsAppSDK
-   Version: 1.8.251003001
+   Version: 2.4.0
    Copyright (c) Microsoft Corporation
    License: MIT
 
@@ -56,7 +56,7 @@ by, or sponsored by the respective copyright holders.
    Copyright (c) Microsoft Corporation
    License: MIT
 
--------------------------------------------------------------------------------
+---
 
 MIT License
 
@@ -78,7 +78,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
--------------------------------------------------------------------------------
+---
 
 Additional notes:
 
@@ -95,4 +95,4 @@ Additional notes:
 - If you have any questions regarding these notices, please contact the
   application developer.
 
--------------------------------------------------------------------------------
+---

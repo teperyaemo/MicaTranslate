@@ -55,7 +55,7 @@ public sealed partial class SupportPage : Page
         object sender,
         RoutedEventArgs e)
     {
-        string url = "https://google.com";
+        string url = "https://github.com/teperyaemo/MicaTranslate";
 
         if (Uri.TryCreate(url, UriKind.Absolute, out Uri uriResult))
         {
