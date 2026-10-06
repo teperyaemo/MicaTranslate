@@ -26,6 +26,7 @@ public sealed partial class HotkeyPickerControl : UserControl
     }
 
     #region DependencyProperties
+
     public HotkeyModel Hotkey
     {
         get => (HotkeyModel)GetValue(HotkeyProperty);
@@ -78,7 +79,7 @@ public sealed partial class HotkeyPickerControl : UserControl
             typeof(HotkeyPickerControl),
             new PropertyMetadata(null));
 
-    #endregion
+    #endregion DependencyProperties
 
     private static void OnHotkeyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
@@ -144,5 +145,4 @@ public sealed partial class HotkeyPickerControl : UserControl
             PressedKeys.Add(key);
         }
     }
-
 }

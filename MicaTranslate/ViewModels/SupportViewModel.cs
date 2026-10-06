@@ -25,7 +25,7 @@ public partial class SupportViewModel : ObservableObject, INavigationAware
     [ObservableProperty]
     private bool alwaysOnTop;
 
-    partial void OnAlwaysOnTopChanged(bool value)
+    private partial void OnAlwaysOnTopChanged(bool value)
     {
         _windowService.SetAlwaysOnTop(value);
     }

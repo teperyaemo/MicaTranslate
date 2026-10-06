@@ -1,89 +1,88 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <UserControl
     x:Class="MicaTranslate.UI.Controls.HotkeyPickerControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MicaTranslate.UI.Controls"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:CommunityToolkit.WinUI.Controls" 
-    xmlns:selectors="using:MicaTranslate.UI.Selectors" 
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:converters="using:MicaTranslate.UI.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:MicaTranslate.UI.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:selectors="using:MicaTranslate.UI.Selectors"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <converters:VirtualKeyToNameConverter x:Key="KeyNameConverter"/>
+        <converters:VirtualKeyToNameConverter x:Key="KeyNameConverter" />
 
         <DataTemplate x:Key="KeyTemplate">
             <Border
-            Padding="12,0"
-            Height="36"
-            MinWidth="36"
-            CornerRadius="2"
-            Background="{ThemeResource AccentFillColorDefaultBrush}">
+                Height="36"
+                MinWidth="36"
+                Padding="12,0"
+                Background="{ThemeResource AccentFillColorDefaultBrush}"
+                CornerRadius="2">
                 <TextBlock
-                    Text="{Binding Converter={StaticResource KeyNameConverter}}"
-                    FontSize="14"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
+                    FontSize="14"
                     FontWeight="SemiBold"
-                    Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"/>
+                    Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                    Text="{Binding Converter={StaticResource KeyNameConverter}}" />
             </Border>
         </DataTemplate>
 
         <DataTemplate x:Key="WinKeyTemplate">
             <Border
-            Padding="12,0"
-            Height="36"
-            MinWidth="36"
-            CornerRadius="2"
-            Background="{ThemeResource AccentFillColorDefaultBrush}">
+                Height="36"
+                MinWidth="36"
+                Padding="12,0"
+                Background="{ThemeResource AccentFillColorDefaultBrush}"
+                CornerRadius="2">
                 <Viewbox
                     Width="10"
                     Height="10"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
-                    <PathIcon
-                        Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                        Data="M9 20H0V11H9V20ZM20 20H11V11H20V20ZM9 9H0V0H9V9ZM20 9H11V0H20V9Z"/>
+                    <PathIcon Data="M9 20H0V11H9V20ZM20 20H11V11H20V20ZM9 9H0V0H9V9ZM20 9H11V0H20V9Z" Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
                 </Viewbox>
             </Border>
         </DataTemplate>
 
         <selectors:HotkeyTemplateSelector
-        x:Key="HotkeyTemplateSelector"
-        KeyTemplate="{StaticResource KeyTemplate}"
-        WinKeyTemplate="{StaticResource WinKeyTemplate}"/>
+            x:Key="HotkeyTemplateSelector"
+            KeyTemplate="{StaticResource KeyTemplate}"
+            WinKeyTemplate="{StaticResource WinKeyTemplate}" />
 
     </UserControl.Resources>
 
     <Grid>
         <controls:SettingsCard
-            Header="{x:Bind Header}"
             Description="{x:Bind Description}"
+            Header="{x:Bind Header}"
             HeaderIcon="{x:Bind HeaderIcon}">
-            <Button Click="OpenDialog"
-                    Padding="12"
-                    CornerRadius="8">
+            <Button
+                Padding="12"
+                Click="OpenDialog"
+                CornerRadius="8">
                 <StackPanel Orientation="Horizontal" Spacing="15">
                     <ItemsControl
-                        ItemsSource="{x:Bind PressedKeys}"
-                        ItemTemplateSelector="{StaticResource HotkeyTemplateSelector}"
                         x:Name="HotkeyItems"
-                        HorizontalAlignment="Center">
+                        HorizontalAlignment="Center"
+                        ItemTemplateSelector="{StaticResource HotkeyTemplateSelector}"
+                        ItemsSource="{x:Bind PressedKeys}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal" Spacing="6"/>
+                                <StackPanel Orientation="Horizontal" Spacing="6" />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
 
                     <Grid>
-                        <FontIcon Glyph="&#xE70F;" FontSize="16"/>
+                        <FontIcon FontSize="16" Glyph="&#xE70F;" />
                     </Grid>
                 </StackPanel>
             </Button>
         </controls:SettingsCard>
 
     </Grid>
-    
+
 </UserControl>

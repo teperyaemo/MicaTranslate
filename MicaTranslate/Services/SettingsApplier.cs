@@ -23,24 +23,30 @@ public class SettingsApplier(
                 windowService.SetAlwaysOnTop(
                     settings.AlwaysOnTop);
                 break;
+
             case nameof(AppSettings.SelectedTheme):
             case nameof(AppSettings.SelectedBackgroundEffect):
                 themeService.Apply(settings);
                 break;
+
             case nameof(AppSettings.Hotkey):
                 hotkeyService.Register(settings.Hotkey);
                 break;
+
             case nameof(AppSettings.DefaultWidth):
             case nameof(AppSettings.DefaultHeight):
                 windowService.Resize((int)settings.DefaultWidth,
                     (int)settings.DefaultHeight);
                 break;
+
             case nameof(AppSettings.SelectedEngine):
                 translationService.UpdateImplementation();
                 break;
+
             case nameof(AppSettings.AppLanguage):
                 ApplyLanguage(settings.AppLanguage);
                 break;
+
             case nameof(AppSettings.RunAtStartup):
                 await startupService.SetEnabledAsync(settings.RunAtStartup);
                 break;

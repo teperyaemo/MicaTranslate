@@ -95,6 +95,7 @@ public class HotkeyService : IHotkeyService
             }
         }
     }
+
     public bool IsAvailable(HotkeyModel hotkey)
     {
         ParseHotkey(hotkey, out uint modifiers, out uint key);

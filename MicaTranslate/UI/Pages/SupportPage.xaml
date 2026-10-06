@@ -2,30 +2,30 @@
     x:Class="MicaTranslate.UI.Pages.SupportPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ctcontrols="using:CommunityToolkit.WinUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ctcontrols="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d">
 
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="45"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="45" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
 
         <Grid
             Grid.Row="0"
-            Background="{ThemeResource LayerFillColorDefaultBrush}"
-            CornerRadius="8,8,0,0"
             Height="45"
-            Padding="6">
+            Padding="6"
+            Background="{ThemeResource LayerFillColorDefaultBrush}"
+            CornerRadius="8,8,0,0">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <StackPanel
@@ -34,38 +34,31 @@
                 Spacing="4">
 
                 <Button
+                    Padding="6,2"
                     Command="{x:Bind _viewModel.GoBackCommand}"
-                    Style="{StaticResource SubtleButtonStyle}"
-                    Padding="6,2">
+                    Style="{StaticResource SubtleButtonStyle}">
 
-                    <StackPanel
-                        Orientation="Horizontal"
-                        Spacing="5">
+                    <StackPanel Orientation="Horizontal" Spacing="5">
 
-                        <FontIcon
-                            Glyph="&#xE72B;"
-                            FontSize="13"/>
+                        <FontIcon FontSize="13" Glyph="&#xE72B;" />
 
-                        <TextBlock
-                            x:Uid="SupportPage_GoBackBtn"
-                            VerticalAlignment="Center"/>
+                        <TextBlock x:Uid="SupportPage_GoBackBtn" VerticalAlignment="Center" />
 
                     </StackPanel>
 
                 </Button>
-                
+
                 <TextBlock
-                    Grid.Column="0"
                     x:Uid="SupportPage_TitleTb"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
                     FontSize="16"
-                    Style="{StaticResource BodyStrongTextBlockStyle}"
-                    VerticalAlignment="Center"/>
+                    Style="{StaticResource BodyStrongTextBlockStyle}" />
 
             </StackPanel>
 
 
-            <Grid
-                Grid.Column="2">
+            <Grid Grid.Column="2">
 
                 <StackPanel
                     HorizontalAlignment="Right"
@@ -73,13 +66,13 @@
                     Spacing="4">
 
                     <ToggleButton
-                        Content="📌"
                         x:Uid="SupportPage_PinBtn"
                         Background="Transparent"
                         BorderThickness="0"
-                        IsChecked="{x:Bind _viewModel.AlwaysOnTop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        FontSize="16"/>
-                    
+                        Content="📌"
+                        FontSize="16"
+                        IsChecked="{x:Bind _viewModel.AlwaysOnTop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
                 </StackPanel>
 
             </Grid>
@@ -89,20 +82,20 @@
 
         <Grid
             Grid.Row="1"
+            Padding="6"
             BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
-            BorderThickness="0,1,0,0"
-            Padding="6">
+            BorderThickness="0,1,0,0">
 
             <StackPanel Spacing="6">
 
                 <ctcontrols:SettingsCard
                     x:Name="GithubSettingsCard"
-                    IsClickEnabled="True"
+                    x:Uid="SupportPage_GithubSc"
                     Click="GithubSettingsCard_Click"
-                    x:Uid="SupportPage_GithubSc">
+                    IsClickEnabled="True">
 
                     <ctcontrols:SettingsCard.HeaderIcon>
-                        <ImageIcon Source="ms-appx:///Assets/Github-logo.png"/>
+                        <ImageIcon Source="ms-appx:///Assets/Github-logo.png" />
                     </ctcontrols:SettingsCard.HeaderIcon>
 
                 </ctcontrols:SettingsCard>
@@ -115,7 +108,7 @@
                     IsClickEnabled="True">
 
                     <ctcontrols:SettingsCard.HeaderIcon>
-                        <ImageIcon Source="ms-appx:///Assets/Boosty-logo.png"/>
+                        <ImageIcon Source="ms-appx:///Assets/Boosty-logo.png" />
                     </ctcontrols:SettingsCard.HeaderIcon>
 
                 </ctcontrols:SettingsCard>
@@ -128,7 +121,7 @@
                     IsClickEnabled="True">
 
                     <ctcontrols:SettingsCard.HeaderIcon>
-                        <ImageIcon Source="ms-appx:///Assets/Cloudpayments-logo.png"/>
+                        <ImageIcon Source="ms-appx:///Assets/Cloudpayments-logo.png" />
                     </ctcontrols:SettingsCard.HeaderIcon>
 
                 </ctcontrols:SettingsCard>
@@ -137,11 +130,11 @@
                 <ctcontrols:SettingsCard
                     x:Name="CryptoSettingsCard"
                     x:Uid="SupportPage_CryptoSc"
-                    IsClickEnabled="True"
-                    Command="{x:Bind _viewModel.OpenCryptoSupportCommand}">
+                    Command="{x:Bind _viewModel.OpenCryptoSupportCommand}"
+                    IsClickEnabled="True">
 
                     <ctcontrols:SettingsCard.HeaderIcon>
-                        <FontIcon Glyph="&#xE774;"/>
+                        <FontIcon Glyph="&#xE774;" />
                     </ctcontrols:SettingsCard.HeaderIcon>
 
                 </ctcontrols:SettingsCard>

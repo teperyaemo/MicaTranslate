@@ -79,7 +79,6 @@ public sealed partial class SettingsWindow : Window, IAppearanceWindow
             VersionTextBlock.Text =
                 $"{VersionTextBlock.Text} {version.Major}.{version.Minor}.{version.Build}";
         }
-
     }
 
     private void ConfigureTitleBar()

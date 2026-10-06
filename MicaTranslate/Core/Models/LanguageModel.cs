@@ -16,7 +16,7 @@ public partial class LanguageModel : ObservableObject
     [ObservableProperty]
     private string favoriteGlyph = "\uE734";
 
-    partial void OnIsFavoriteChanged(bool value)
+    private partial void OnIsFavoriteChanged(bool value)
     {
         FavoriteGlyph = value ? "\uE735" : "\uE734";
     }

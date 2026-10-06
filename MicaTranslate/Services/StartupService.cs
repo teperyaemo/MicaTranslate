@@ -1,7 +1,7 @@
 ﻿using MicaTranslate.Core.Interfaces.Services;
+using Microsoft.Win32;
 using System;
 using System.Threading.Tasks;
-using Microsoft.Win32;
 using Windows.ApplicationModel;
 
 namespace MicaTranslate.Services;

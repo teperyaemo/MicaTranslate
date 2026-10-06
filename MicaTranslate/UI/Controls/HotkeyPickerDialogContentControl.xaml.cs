@@ -20,6 +20,7 @@ public sealed partial class HotkeyPickerDialogContentControl : UserControl
 
     public ObservableCollection<VirtualKey> PressedKeys { get; set; } = new();
     public Func<HotkeyModel, bool>? HotkeyAvailabilityChecker { get; set; }
+
     public bool HasConflict
     {
         get => (bool)GetValue(HasConflictProperty);

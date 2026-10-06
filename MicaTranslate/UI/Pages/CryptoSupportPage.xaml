@@ -9,8 +9,8 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="45"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="45" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Grid
@@ -21,9 +21,9 @@
             CornerRadius="8,8,0,0">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <StackPanel
@@ -32,21 +32,15 @@
                 Spacing="4">
 
                 <Button
+                    Padding="6,2"
                     Command="{x:Bind _viewModel.GoBackCommand}"
-                    Style="{StaticResource SubtleButtonStyle}"
-                    Padding="6,2">
+                    Style="{StaticResource SubtleButtonStyle}">
 
-                    <StackPanel
-                        Orientation="Horizontal"
-                        Spacing="5">
+                    <StackPanel Orientation="Horizontal" Spacing="5">
 
-                        <FontIcon
-                            Glyph="&#xE72B;"
-                            FontSize="13"/>
+                        <FontIcon FontSize="13" Glyph="&#xE72B;" />
 
-                        <TextBlock
-                            x:Uid="CryptoSupportPage_GoBackBtn"
-                            VerticalAlignment="Center"/>
+                        <TextBlock x:Uid="CryptoSupportPage_GoBackBtn" VerticalAlignment="Center" />
 
                     </StackPanel>
 
@@ -55,9 +49,9 @@
                 <TextBlock
                     x:Uid="CryptoSupportPage_TitleTb"
                     Margin="4,0,0,0"
+                    VerticalAlignment="Center"
                     FontSize="16"
-                    Style="{StaticResource BodyStrongTextBlockStyle}"
-                    VerticalAlignment="Center"/>
+                    Style="{StaticResource BodyStrongTextBlockStyle}" />
 
             </StackPanel>
 
@@ -69,11 +63,11 @@
 
                 <ToggleButton
                     x:Uid="CryptoSupportPage_PinBtn"
-                    Content="📌"
                     Background="Transparent"
                     BorderThickness="0"
+                    Content="📌"
                     FontSize="16"
-                    IsChecked="{x:Bind _viewModel.AlwaysOnTop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    IsChecked="{x:Bind _viewModel.AlwaysOnTop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             </StackPanel>
 
@@ -86,24 +80,22 @@
             BorderThickness="0,1,0,0">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="220"/>
-                <ColumnDefinition Width="24"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="24" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <Border
                 Grid.Column="0"
                 Width="200"
                 Height="200"
+                Padding="8"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Background="White"
-                CornerRadius="8"
-                Padding="8">
+                CornerRadius="8">
 
-                <Image
-                    Source="ms-appx:///Assets/Crypto/UsdtTronQr.svg"
-                    Stretch="Uniform"/>
+                <Image Source="ms-appx:///Assets/Crypto/UsdtTronQr.svg" Stretch="Uniform" />
 
             </Border>
 
@@ -113,24 +105,20 @@
                 VerticalAlignment="Center">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <StackPanel
-                    Grid.Row="0"
-                    Spacing="3">
+                <StackPanel Grid.Row="0" Spacing="3">
 
-                    <StackPanel
-                        Orientation="Horizontal"
-                        Spacing="8">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
 
                         <TextBlock
-                            Text="USDT"
                             FontSize="22"
-                            Style="{StaticResource BodyStrongTextBlockStyle}"/>
+                            Style="{StaticResource BodyStrongTextBlockStyle}"
+                            Text="USDT" />
 
                         <Border
                             Padding="7,2"
@@ -139,9 +127,9 @@
                             CornerRadius="4">
 
                             <TextBlock
-                                Text="TRON"
                                 FontSize="11"
-                                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"/>
+                                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                                Text="TRON" />
 
                         </Border>
 
@@ -150,7 +138,7 @@
                     <TextBlock
                         x:Uid="CryptoSupportPage_NetworkTb"
                         FontSize="12"
-                        Opacity="0.65"/>
+                        Opacity="0.65" />
 
                 </StackPanel>
 
@@ -162,13 +150,13 @@
                     <TextBlock
                         x:Uid="CryptoSupportPage_WalletAddressTb"
                         FontSize="12"
-                        Style="{StaticResource BodyStrongTextBlockStyle}"/>
+                        Style="{StaticResource BodyStrongTextBlockStyle}" />
 
                     <Grid>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
                         <Border
@@ -182,10 +170,10 @@
 
                             <TextBlock
                                 x:Name="WalletAddressTextBlock"
-                                Text="{x:Bind _viewModel.CryptoWalletAddress, Mode=OneWay}"
+                                VerticalAlignment="Center"
                                 FontSize="12"
-                                TextTrimming="CharacterEllipsis"
-                                VerticalAlignment="Center"/>
+                                Text="{x:Bind _viewModel.CryptoWalletAddress, Mode=OneWay}"
+                                TextTrimming="CharacterEllipsis" />
 
                         </Border>
 
@@ -194,27 +182,27 @@
                             x:Uid="CryptoSupportPage_CopyWalletBtn"
                             Grid.Column="1"
                             Margin="6,0,0,0"
-                            Click="CopyWalletButton_Click"
-                            VerticalAlignment="Center"/>
+                            VerticalAlignment="Center"
+                            Click="CopyWalletButton_Click" />
 
                     </Grid>
 
                 </StackPanel>
 
                 <TextBlock
-                    Grid.Row="2"
                     x:Uid="CryptoSupportPage_ScanQrTb"
+                    Grid.Row="2"
                     Margin="0,5,0,0"
                     FontSize="11"
-                    Opacity="0.6"/>
+                    Opacity="0.6" />
 
                 <InfoBar
-                    Grid.Row="3"
                     x:Uid="CryptoSupportPage_InfoBar"
+                    Grid.Row="3"
                     Margin="0,12,0,0"
                     IsClosable="False"
                     IsOpen="True"
-                    Severity="Warning"/>
+                    Severity="Warning" />
 
             </Grid>
 

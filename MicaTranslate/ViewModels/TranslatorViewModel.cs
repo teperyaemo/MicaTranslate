@@ -44,7 +44,8 @@ public partial class TranslatorViewModel : ObservableObject, INavigationAware
     // ===== Source Text =====
     [ObservableProperty]
     private string sourceText;
-    partial void OnSourceTextChanged(string value)
+
+    private partial void OnSourceTextChanged(string value)
     {
         _debounceCts?.Cancel();
         _debounceCts = new CancellationTokenSource();
@@ -57,7 +58,8 @@ public partial class TranslatorViewModel : ObservableObject, INavigationAware
     // ===== Translated Text =====
     [ObservableProperty]
     private string translatedText;
-    partial void OnTranslatedTextChanged(string value)
+
+    private partial void OnTranslatedTextChanged(string value)
     {
         if (_settingsService.Settings.CopyToClipboard &&
             !string.IsNullOrWhiteSpace(value))
@@ -70,7 +72,7 @@ public partial class TranslatorViewModel : ObservableObject, INavigationAware
     [ObservableProperty]
     private LanguageModel selectedSourceLanguage;
 
-    partial void OnSelectedSourceLanguageChanged(LanguageModel? value)
+    private partial void OnSelectedSourceLanguageChanged(LanguageModel? value)
     {
         OnSourceTextChanged(SourceText);
     }
@@ -78,7 +80,7 @@ public partial class TranslatorViewModel : ObservableObject, INavigationAware
     [ObservableProperty]
     private LanguageModel selectedTargetLanguage;
 
-    partial void OnSelectedTargetLanguageChanged(LanguageModel? value)
+    private partial void OnSelectedTargetLanguageChanged(LanguageModel? value)
     {
         OnSourceTextChanged(SourceText);
     }
@@ -86,7 +88,7 @@ public partial class TranslatorViewModel : ObservableObject, INavigationAware
     [ObservableProperty]
     private bool alwaysOnTop;
 
-    partial void OnAlwaysOnTopChanged(bool value)
+    private partial void OnAlwaysOnTopChanged(bool value)
     {
         _windowService.SetAlwaysOnTop(value);
     }
@@ -320,4 +322,3 @@ public partial class TranslatorViewModel : ObservableObject, INavigationAware
         AlwaysOnTop = _windowService.IsAlwaysOnTop();
     }
 }
-

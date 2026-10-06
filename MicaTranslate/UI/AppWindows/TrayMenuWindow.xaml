@@ -4,85 +4,52 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Title="">
+    Title=""
+    mc:Ignorable="d">
 
-    <Grid
-        x:Name="Root"
-        Background="Transparent">
+    <Grid x:Name="Root" Background="Transparent">
 
         <Grid.Resources>
 
-            <!-- ========================================================= -->
-            <!-- Button style                                               -->
-            <!-- ========================================================= -->
+            <!--  =========================================================  -->
+            <!--  Button style  -->
+            <!--  =========================================================  -->
 
-            <Style
-                x:Key="MenuButtonStyle"
-                TargetType="Button">
+            <Style x:Key="MenuButtonStyle" TargetType="Button">
 
-                <Setter
-                    Property="Height"
-                    Value="32"/>
+                <Setter Property="Height" Value="32" />
 
-                <Setter
-                    Property="MinHeight"
-                    Value="32"/>
+                <Setter Property="MinHeight" Value="32" />
 
-                <Setter
-                    Property="HorizontalAlignment"
-                    Value="Stretch"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
 
-                <Setter
-                    Property="HorizontalContentAlignment"
-                    Value="Stretch"/>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
 
-                <Setter
-                    Property="VerticalContentAlignment"
-                    Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center" />
 
-                <Setter
-                    Property="Padding"
-                    Value="8,0"/>
+                <Setter Property="Padding" Value="8,0" />
 
-                <Setter
-                    Property="Margin"
-                    Value="0"/>
+                <Setter Property="Margin" Value="0" />
 
-                <Setter
-                    Property="Background"
-                    Value="Transparent"/>
+                <Setter Property="Background" Value="Transparent" />
 
-                <Setter
-                    Property="BorderBrush"
-                    Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="Transparent" />
 
-                <Setter
-                    Property="BorderThickness"
-                    Value="0"/>
+                <Setter Property="BorderThickness" Value="0" />
 
-                <Setter
-                    Property="CornerRadius"
-                    Value="5"/>
+                <Setter Property="CornerRadius" Value="5" />
 
-                <Setter
-                    Property="Foreground"
-                    Value="{ThemeResource TextFillColorPrimaryBrush}"/>
+                <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
 
-                <Setter
-                    Property="FontSize"
-                    Value="14"/>
+                <Setter Property="FontSize" Value="14" />
 
-                <Setter
-                    Property="Template">
+                <Setter Property="Template">
 
                     <Setter.Value>
 
-                        <ControlTemplate
-                            TargetType="Button">
+                        <ControlTemplate TargetType="Button">
 
                             <Grid>
-
                                 <Border
                                     x:Name="ButtonBackground"
                                     HorizontalAlignment="Stretch"
@@ -93,34 +60,27 @@
                                     CornerRadius="5">
 
                                     <ContentPresenter
+                                        Padding="{TemplateBinding Padding}"
                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                         Content="{TemplateBinding Content}"
-                                        ContentTemplate="{TemplateBinding ContentTemplate}"
-                                        Padding="{TemplateBinding Padding}"/>
+                                        ContentTemplate="{TemplateBinding ContentTemplate}" />
 
                                 </Border>
 
                                 <VisualStateManager.VisualStateGroups>
 
-                                    <VisualStateGroup
-                                        x:Name="CommonStates">
+                                    <VisualStateGroup x:Name="CommonStates">
 
-                                        <VisualState
-                                            x:Name="Normal"/>
+                                        <VisualState x:Name="Normal" />
 
-                                        <VisualState
-                                            x:Name="PointerOver">
+                                        <VisualState x:Name="PointerOver">
 
                                             <Storyboard>
 
-                                                <ObjectAnimationUsingKeyFrames
-                                                    Storyboard.TargetName="ButtonBackground"
-                                                    Storyboard.TargetProperty="Background">
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Background">
 
-                                                    <DiscreteObjectKeyFrame
-                                                        KeyTime="0"
-                                                        Value="{ThemeResource SubtleFillColorSecondaryBrush}"/>
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SubtleFillColorSecondaryBrush}" />
 
                                                 </ObjectAnimationUsingKeyFrames>
 
@@ -128,18 +88,13 @@
 
                                         </VisualState>
 
-                                        <VisualState
-                                            x:Name="Pressed">
+                                        <VisualState x:Name="Pressed">
 
                                             <Storyboard>
 
-                                                <ObjectAnimationUsingKeyFrames
-                                                    Storyboard.TargetName="ButtonBackground"
-                                                    Storyboard.TargetProperty="Background">
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Background">
 
-                                                    <DiscreteObjectKeyFrame
-                                                        KeyTime="0"
-                                                        Value="{ThemeResource SubtleFillColorTertiaryBrush}"/>
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SubtleFillColorTertiaryBrush}" />
 
                                                 </ObjectAnimationUsingKeyFrames>
 
@@ -147,8 +102,7 @@
 
                                         </VisualState>
 
-                                        <VisualState
-                                            x:Name="Disabled">
+                                        <VisualState x:Name="Disabled">
 
                                             <Storyboard>
 
@@ -156,7 +110,7 @@
                                                     Storyboard.TargetName="ButtonBackground"
                                                     Storyboard.TargetProperty="Opacity"
                                                     To="0.4"
-                                                    Duration="0"/>
+                                                    Duration="0" />
 
                                             </Storyboard>
 
@@ -165,7 +119,6 @@
                                     </VisualStateGroup>
 
                                 </VisualStateManager.VisualStateGroups>
-
                             </Grid>
 
                         </ControlTemplate>
@@ -179,9 +132,9 @@
         </Grid.Resources>
 
 
-        <!-- ============================================================= -->
-        <!-- Menu                                                          -->
-        <!-- ============================================================= -->
+        <!--  =============================================================  -->
+        <!--  Menu  -->
+        <!--  =============================================================  -->
 
         <Border
             x:Name="MenuBorder"
@@ -193,36 +146,34 @@
             BorderThickness="0"
             CornerRadius="8">
 
-            <StackPanel
-                HorizontalAlignment="Stretch"
-                Spacing="1">
+            <StackPanel HorizontalAlignment="Stretch" Spacing="1">
 
-                <!-- Settings -->
+                <!--  Settings  -->
 
                 <Button
                     x:Name="SettingsButton"
-                    Style="{StaticResource MenuButtonStyle}"
-                    Click="SettingsButton_Click">
+                    Click="SettingsButton_Click"
+                    Style="{StaticResource MenuButtonStyle}">
 
                     <TextBlock
-                        Text="Settings"
+                        VerticalAlignment="Center"
                         FontSize="14"
-                        VerticalAlignment="Center"/>
+                        Text="Settings" />
 
                 </Button>
 
 
-                <!-- Exit -->
+                <!--  Exit  -->
 
                 <Button
                     x:Name="ExitButton"
-                    Style="{StaticResource MenuButtonStyle}"
-                    Click="ExitButton_Click">
+                    Click="ExitButton_Click"
+                    Style="{StaticResource MenuButtonStyle}">
 
                     <TextBlock
-                        Text="Exit"
+                        VerticalAlignment="Center"
                         FontSize="14"
-                        VerticalAlignment="Center"/>
+                        Text="Exit" />
 
                 </Button>
 
