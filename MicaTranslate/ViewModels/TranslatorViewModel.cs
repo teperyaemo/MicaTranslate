@@ -45,7 +45,7 @@ public partial class TranslatorViewModel : ObservableObject, INavigationAware
     [ObservableProperty]
     private string sourceText;
 
-    private partial void OnSourceTextChanged(string value)
+    partial void OnSourceTextChanged(string value)
     {
         _debounceCts?.Cancel();
         _debounceCts = new CancellationTokenSource();
@@ -59,7 +59,7 @@ public partial class TranslatorViewModel : ObservableObject, INavigationAware
     [ObservableProperty]
     private string translatedText;
 
-    private partial void OnTranslatedTextChanged(string value)
+    partial void OnTranslatedTextChanged(string value)
     {
         if (_settingsService.Settings.CopyToClipboard &&
             !string.IsNullOrWhiteSpace(value))
@@ -72,7 +72,7 @@ public partial class TranslatorViewModel : ObservableObject, INavigationAware
     [ObservableProperty]
     private LanguageModel selectedSourceLanguage;
 
-    private partial void OnSelectedSourceLanguageChanged(LanguageModel? value)
+    partial void OnSelectedSourceLanguageChanged(LanguageModel? value)
     {
         OnSourceTextChanged(SourceText);
     }
@@ -80,7 +80,7 @@ public partial class TranslatorViewModel : ObservableObject, INavigationAware
     [ObservableProperty]
     private LanguageModel selectedTargetLanguage;
 
-    private partial void OnSelectedTargetLanguageChanged(LanguageModel? value)
+    partial void OnSelectedTargetLanguageChanged(LanguageModel? value)
     {
         OnSourceTextChanged(SourceText);
     }
@@ -88,7 +88,7 @@ public partial class TranslatorViewModel : ObservableObject, INavigationAware
     [ObservableProperty]
     private bool alwaysOnTop;
 
-    private partial void OnAlwaysOnTopChanged(bool value)
+    partial void OnAlwaysOnTopChanged(bool value)
     {
         _windowService.SetAlwaysOnTop(value);
     }

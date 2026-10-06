@@ -23,6 +23,7 @@ public partial class App : Application
     private CancellationTokenSource? _saveCts;
 
     public static IHost Host { get; }
+    private static Mutex? _appMutex;
 
     static App()
     {
@@ -61,12 +62,23 @@ public partial class App : Application
 
     public App()
     {
+        _appMutex = new Mutex(
+            initiallyOwned: true,
+            name: @"Global\MicaTranslateAppMutex",
+            createdNew: out bool createdNew);
+
+        if (!createdNew)
+        {
+            Environment.Exit(0);
+            return;
+        }
+
         InitializeComponent();
 
         this.UnhandledException += (s, e) =>
         {
             System.IO.File.WriteAllText("crash.log", e.Exception.ToString());
-            e.Handled = true; // не дать приложению упасть молча, но можно и false
+            e.Handled = true;
         };
         AppDomain.CurrentDomain.UnhandledException += (s, e) =>
         {
